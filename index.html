@@ -1,1072 +1,867 @@
 <!DOCTYPE html>
+
 <html lang="ru">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Enigma Partner — подключение водителей и курьеров к Uber, Bolt, FreeNow, Glovo, Wolt, Uber Eats и Bolt Food."
-    >
-
-    <title>Enigma Partner</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Enigma Partner — подключение водителей и курьеров к Uber, Bolt, FreeNow, Glovo, Wolt, Uber Eats и Bolt Food." name="description"/>
+<title>Enigma Partner</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
 </head>
-
 <body>
-
-    <!-- Боковые дороги -->
-
-    <div
-        class="side-road side-road-left"
-        aria-hidden="true"
-    >
-        <img
-            src="images/slide6.png"
-            class="side-car side-car-left"
-            alt=""
-        >
-    </div>
-
-    <div
-        class="side-road side-road-right"
-        aria-hidden="true"
-    >
-        <img
-            src="images/slide6.png"
-            class="side-car side-car-right"
-            alt=""
-        >
-    </div>
-
-    <!-- Выдвижная шапка -->
-
-    <div
-        class="header-trigger"
-        id="headerTrigger"
-    >
-        <span class="header-handle">
-            <span class="header-handle-arrow">
+<!-- Боковые дороги -->
+<div aria-hidden="true" class="side-road side-road-left">
+<img alt="" class="side-car side-car-left" src="images/slide6.png"/>
+</div>
+<div aria-hidden="true" class="side-road side-road-right">
+<img alt="" class="side-car side-car-right" src="images/slide6.png"/>
+</div>
+<!-- Зона открытия шапки -->
+<div class="header-trigger" id="headerTrigger">
+<span class="header-handle">
+<span class="header-handle-arrow">
                 ⌄
             </span>
-        </span>
-    </div>
-
-    <header
-        class="site-header"
-        id="siteHeader"
-    >
-
-        <div class="header-container">
-
-            <a
-                href="#home"
-                class="logo"
-            >
-                <img
-                    src="images/logo (2).png"
-                    alt="Enigma Partner"
-                >
-            </a>
-
-            <nav
-                class="navigation"
-                aria-label="Главное меню"
-            >
-                <a href="#home">Главная</a>
-                <a href="#tariffs">Тарифы</a>
-                <a href="#content">Контент</a>
-                <a href="#application">Заявка</a>
-                <a href="#contacts">Контакты</a>
-            </nav>
-
-            <a
-                href="#application"
-                class="header-button"
-            >
+</span>
+</div>
+<!-- Шапка -->
+<header class="site-header" id="siteHeader">
+<div class="header-container">
+<a aria-label="Enigma Partner — главная" class="logo" href="#home">
+<img alt="Enigma Partner" src="images/logo (2).png"/>
+</a>
+<nav aria-label="Главное меню" class="navigation">
+<a href="#home">Главная</a>
+<a href="#tariffs">Тарифы</a>
+<a href="#content">Контент</a>
+<a href="#application">Заявка</a>
+<a href="#contacts">Контакты</a>
+</nav>
+<a class="header-button" href="#application">
                 Начать работу
             </a>
+</div>
+</header>
+<main>
+<!-- Первый экран -->
+<section class="hero" id="home">
+<div class="hero-container">
+<!-- Основной текст -->
+<div class="hero-copy mobile-first-copy">
+<span class="hero-label">
+                        ENIGMA PARTNER
+                    </span>
+<h1>
+                        Работайте с Enigma Partner
 
+                        <span>
+                            и зарабатывайте больше
+                        </span>
+</h1>
+<p class="hero-description">
+                        Подключаем водителей и курьеров к Uber,
+                        Bolt, FreeNow, Glovo, Wolt, Uber Eats
+                        и Bolt Food.
+                    </p>
+<div class="hero-benefits-list">
+<div class="hero-benefit-item">
+<span>✓</span>
+                            Быстрое оформление документов
+                        </div>
+<div class="hero-benefit-item">
+<span>✓</span>
+                            Еженедельные выплаты
+                        </div>
+<div class="hero-benefit-item">
+<span>✓</span>
+                            Поддержка на каждом этапе
+                        </div>
+</div>
+<div class="hero-buttons">
+<a class="hero-btn hero-btn-primary" href="#application">
+                            Начать работу
+                            <span>→</span>
+</a>
+<a class="hero-btn hero-btn-secondary" href="#contacts">
+                            Бесплатная консультация
+                        </a>
+</div>
+</div>
+<!-- Слайдер -->
+<div class="hero-slider-area">
+<div class="mini-slider">
+<img alt="Работа водителем с Enigma Partner" class="mini-slide active" src="images/slide1.png"/>
+<img alt="Работа курьером с Enigma Partner" class="mini-slide" src="images/slide2.png"/>
+<img alt="Работай с Enigma Partner" class="mini-slide" src="images/slide3.png"/>
+<button aria-label="Предыдущий слайд" class="slider-arrow slider-prev" type="button">
+                            ‹
+                        </button>
+<button aria-label="Следующий слайд" class="slider-arrow slider-next" type="button">
+                            ›
+                        </button>
+<div class="mini-dots">
+<button aria-label="Слайд 1" class="mini-dot active" data-slide="0" type="button"></button>
+<button aria-label="Слайд 2" class="mini-dot" data-slide="1" type="button"></button>
+<button aria-label="Слайд 3" class="mini-dot" data-slide="2" type="button"></button>
+</div>
+</div>
+<!-- Преимущества -->
+<div class="hero-features">
+<div class="hero-feature">
+<span>⚡</span>
+<div>
+<strong>
+                                    Подключение за 24 часа
+                                </strong>
+<small>
+                                    Минимум ожидания
+                                </small>
+</div>
+</div>
+<div class="hero-feature">
+<span>💸</span>
+<div>
+<strong>
+                                    Еженедельные выплаты
+                                </strong>
+<small>
+                                    Без задержек
+                                </small>
+</div>
+</div>
+<div class="hero-feature">
+<span>🛡️</span>
+<div>
+<strong>
+                                    Поддержка 24/7
+                                </strong>
+<small>
+                                    Всегда на связи
+                                </small>
+</div>
+</div>
+</div>
+</div>
+<!-- Телефон -->
+<div class="hero-image">
+<div class="phone-light"></div>
+<img alt="Приложение Enigma Partner" src="images/phone.png"/>
+</div>
+<!-- Рекламные баннеры только для компьютера -->
+<div class="desktop-promos">
+<article class="desktop-promo desktop-promo-referral">
+<div class="desktop-promo-icon">
+            💸
         </div>
-
-    </header>
-
-    <main>
-
-        <!-- Первый экран -->
-
-        <section
-            class="hero"
-            id="home"
-        >
-
-            <div class="hero-container">
-
-                <!-- Верхний ряд: слайдер и телефон -->
-
-                <div class="hero-top">
-
-                    <div class="hero-intro">
-
-                        <!-- Слайдер -->
-
-                        <div class="mini-slider">
-
-                            <img
-                                src="images/slide1.png"
-                                class="mini-slide active"
-                                alt="Работа водителем с Enigma Partner"
-                            >
-
-                            <img
-                                src="images/slide2.png"
-                                class="mini-slide"
-                                alt="Работа курьером с Enigma Partner"
-                            >
-
-                            <img
-                                src="images/slide3.png"
-                                class="mini-slide"
-                                alt="Работай с Enigma Partner"
-                            >
-
-                            <button
-                                class="slider-arrow slider-prev"
-                                type="button"
-                                aria-label="Предыдущий слайд"
-                            >
-                                ‹
-                            </button>
-
-                            <button
-                                class="slider-arrow slider-next"
-                                type="button"
-                                aria-label="Следующий слайд"
-                            >
-                                ›
-                            </button>
-
-                            <div class="mini-dots">
-
-                                <button
-                                    class="mini-dot active"
-                                    type="button"
-                                    data-slide="0"
-                                    aria-label="Слайд 1"
-                                ></button>
-
-                                <button
-                                    class="mini-dot"
-                                    type="button"
-                                    data-slide="1"
-                                    aria-label="Слайд 2"
-                                ></button>
-
-                                <button
-                                    class="mini-dot"
-                                    type="button"
-                                    data-slide="2"
-                                    aria-label="Слайд 3"
-                                ></button>
-
-                            </div>
-
-                        </div>
-
-                        <!-- Преимущества -->
-
-                        <div class="hero-features">
-
-                            <div class="hero-feature">
-                                <span>⚡</span>
-
-                                <div>
-                                    <strong>
-                                        Подключение за 24 часа
-                                    </strong>
-
-                                    <small>
-                                        Минимум ожидания
-                                    </small>
-                                </div>
-                            </div>
-
-                            <div class="hero-feature">
-                                <span>💸</span>
-
-                                <div>
-                                    <strong>
-                                        Еженедельные выплаты
-                                    </strong>
-
-                                    <small>
-                                        Без задержек
-                                    </small>
-                                </div>
-                            </div>
-
-                            <div class="hero-feature">
-                                <span>🛡️</span>
-
-                                <div>
-                                    <strong>
-                                        Поддержка 24/7
-                                    </strong>
-
-                                    <small>
-                                        Всегда на связи
-                                    </small>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Телефон -->
-
-                    <div class="hero-image">
-
-                        <div class="phone-light"></div>
-
-                        <img
-                            src="images/phone.png"
-                            alt="Приложение Enigma Partner"
-                        >
-
-                    </div>
-
-                </div>
-
-                <!-- Нижний ряд: текст и калькулятор -->
-
-                <div class="hero-bottom">
-
-                    <!-- Текст слева -->
-
-                    <div class="hero-copy">
-
-                        <span class="hero-label">
+<div class="desktop-promo-content">
+<span class="desktop-promo-label">
+                ПРИГЛАСИ ДРУГА
+            </span>
+<h3>
+                Получи 200 zł
+            </h3>
+<p>
+                За каждого водителя, который подключится
+                к Enigma Partner и начнёт работать.
+            </p>
+<a href="#application">
+                Получить бонус →
+            </a>
+</div>
+</article>
+<article class="desktop-promo desktop-promo-start">
+<div class="desktop-promo-icon">
+            🎁
+        </div>
+<div class="desktop-promo-content">
+<span>ПАРТНЁРСКАЯ ПРОГРАММА</span>
+<h3>Экономьте до 15%</h3>
+<p>
+Все водители и курьеры Enigma Partner
+получают эксклюзивные скидки
+у наших партнёров по всей Польше.
+</p>
+<a href="#partners">
+Получить скидки →
+</a>
+</div>
+</article>
+</div>
+<div class="hero-bottom-content">
+<!-- Рекламный баннер Chebureki -->
+<div class="chebureki-hero-banner">
+<div class="chebureki-hero-slides">
+<div class="chebureki-hero-slide active">
+<img alt="Chebureki — партнёр Enigma Partner" src="images/slid1.PNG"/>
+</div>
+<div class="chebureki-hero-slide">
+<img alt="Чебуреки" src="images/slid2.PNG"/>
+</div>
+<div class="chebureki-hero-slide">
+<img alt="Приготовление чебуреков" src="images/slid3.PNG"/>
+</div>
+<div class="chebureki-hero-slide">
+<img alt="Chebureki" src="images/slid4.PNG"/>
+</div>
+</div>
+<div class="chebureki-hero-shadow"></div>
+<div class="chebureki-hero-label">
+<span>
+                Партнёр Enigma Partner
+            </span>
+<strong>
+                CHEBUREKI
+            </strong>
+</div>
+<button aria-label="Предыдущая фотография" class="chebureki-hero-arrow chebureki-hero-prev" type="button">
+            ‹
+        </button>
+<button aria-label="Следующая фотография" class="chebureki-hero-arrow chebureki-hero-next" type="button">
+            ›
+        </button>
+<div class="chebureki-hero-dots">
+<button aria-label="Слайд 1" class="chebureki-hero-dot active" data-chebureki-index="0" type="button"></button>
+<button aria-label="Слайд 2" class="chebureki-hero-dot" data-chebureki-index="1" type="button"></button>
+<button aria-label="Слайд 3" class="chebureki-hero-dot" data-chebureki-index="2" type="button"></button>
+<button aria-label="Слайд 4" class="chebureki-hero-dot" data-chebureki-index="3" type="button"></button>
+</div>
+</div>
+<!-- Калькулятор дохода -->
+<div aria-hidden="true" class="mustang-lane">
+<div class="mustang-banner">
+<div class="mustang-light"></div>
+<img alt="" src="images/slide6.png"/>
+</div>
+</div><article class="earnings-card">
+<div class="earnings-card-header">
+<span class="earnings-label">
+            Калькулятор дохода
+        </span>
+<h2>
+            Рассчитайте свой доход
+        </h2>
+<p>
+            Укажите удобный график работы.
+            Расчёт сделан по средней ставке 16 zł в час.
+        </p>
+</div>
+<!-- Часы в день -->
+<div class="earnings-control">
+<div class="earnings-control-top">
+<label for="hoursPerDay">
+                Часов в день
+            </label>
+<strong>
+<span id="hoursValue">8</span> ч
+            </strong>
+</div>
+<input id="hoursPerDay" max="14" min="2" step="1" type="range" value="8"/>
+<div class="earnings-range-labels">
+<span>2 ч</span>
+<span>14 ч</span>
+</div>
+</div>
+<!-- Дни в неделю -->
+<div class="earnings-control">
+<div class="earnings-control-top">
+<label for="daysPerWeek">
+                Дней в неделю
+            </label>
+<strong>
+<span id="daysValue">5</span>
+</strong>
+</div>
+<input id="daysPerWeek" max="7" min="1" step="1" type="range" value="5"/>
+<div class="earnings-range-labels">
+<span>1 день</span>
+<span>7 дней</span>
+</div>
+</div>
+<!-- Бонусы -->
+<label class="earnings-bonus">
+<input id="includeBonus" type="checkbox"/>
+<span class="earnings-bonus-switch"></span>
+<span class="earnings-bonus-text">
+<strong>
+                Учитывать возможные бонусы
+            </strong>
+<small>
+                Добавим ориентировочно 10%
+            </small>
+</span>
+</label>
+<!-- Информация о ставке -->
+<div class="earnings-rate-info">
+<div class="earnings-rate-icon">
+            zł
+        </div>
+<div>
+<span>
+                Средняя ставка расчёта
+            </span>
+<strong>
+                16 zł / час
+            </strong>
+</div>
+</div>
+<!-- Результаты -->
+<div class="earnings-results earnings-results-new">
+<div class="earnings-result">
+<span>
+                За день
+            </span>
+<strong>
+<span id="dailyIncome">128</span> zł
+            </strong>
+</div>
+<div class="earnings-result">
+<span>
+                За неделю
+            </span>
+<strong>
+<span id="weeklyIncome">640</span> zł
+            </strong>
+</div>
+<div class="earnings-result earnings-result-main">
+<span>
+                За месяц
+            </span>
+<strong>
+<span id="monthlyIncome">2 771</span> zł
+            </strong>
+</div>
+</div>
+<!-- Краткое описание графика -->
+<div class="earnings-schedule">
+<span class="earnings-schedule-icon">
+            📅
+        </span>
+<p>
+            Ваш график:
+            <strong id="scheduleSummary">
+                8 часов в день, 5 дней в неделю
+            </strong>
+</p>
+</div>
+<p class="earnings-note">
+        Расчёт ориентировочный и не является гарантией дохода.
+        Итог зависит от города, спроса, сервиса, бонусов и расходов.
+    </p>
+<a class="earnings-button" href="#application">
+        Начать работать по этому графику →
+    </a>
+</article>
+</div>
+<!-- Рекламный баннер -->
+<div class="hero-banner">
+<div class="banner-content">
+<span class="banner-label">
                             ENIGMA PARTNER
                         </span>
-
-                        <h1>
+<h2>
                             Работайте с Enigma Partner
 
                             <span>
                                 и зарабатывайте больше
                             </span>
-                        </h1>
-
-                        <p class="hero-description">
-                            Подключаем водителей и курьеров к Uber,
-                            Bolt, FreeNow, Glovo, Wolt, Uber Eats
-                            и Bolt Food.
-                        </p>
-
-                        <div class="hero-benefits-list">
-
-                            <div class="hero-benefit-item">
-                                <span>✓</span>
-                                Быстрое оформление документов
-                            </div>
-
-                            <div class="hero-benefit-item">
-                                <span>✓</span>
-                                Еженедельные выплаты
-                            </div>
-
-                            <div class="hero-benefit-item">
-                                <span>✓</span>
-                                Поддержка на каждом этапе
-                            </div>
-
-                        </div>
-
-                        <div class="hero-buttons">
-
-                            <a
-                                href="#application"
-                                class="hero-btn hero-btn-primary"
-                            >
-                                Начать работу
-                                <span>→</span>
-                            </a>
-
-                            <a
-                                href="#contacts"
-                                class="hero-btn hero-btn-secondary"
-                            >
-                                Бесплатная консультация
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Калькулятор справа -->
-
-                    <div class="hero-income">
-
-                        <article class="earnings-card">
-
-                            <div class="earnings-card-header">
-
-                                <span class="earnings-label">
-                                    Калькулятор дохода
-                                </span>
-
-                                <h2>
-                                    Сколько вы можете заработать?
-                                </h2>
-
-                                <p>
-                                    Выберите примерный график
-                                    и получите ориентировочный расчёт.
-                                </p>
-
-                            </div>
-
-                            <div class="earnings-control">
-
-                                <div class="earnings-control-top">
-
-                                    <label for="hoursPerDay">
-                                        Часов в день
-                                    </label>
-
-                                    <strong>
-                                        <span id="hoursValue">12</span> ч
-                                    </strong>
-
-                                </div>
-
-                                <input
-                                    type="range"
-                                    id="hoursPerDay"
-                                    min="1"
-                                    max="16"
-                                    value="12"
-                                    step="1"
-                                >
-
-                            </div>
-
-                            <div class="earnings-control">
-
-                                <div class="earnings-control-top">
-
-                                    <label for="daysPerWeek">
-                                        Дней в неделю
-                                    </label>
-
-                                    <strong>
-                                        <span id="daysValue">6</span>
-                                    </strong>
-
-                                </div>
-
-                                <input
-                                    type="range"
-                                    id="daysPerWeek"
-                                    min="1"
-                                    max="7"
-                                    value="6"
-                                    step="1"
-                                >
-
-                            </div>
-
-                            <div class="earnings-control">
-
-                                <div class="earnings-control-top">
-
-                                    <label for="hourlyIncome">
-                                        Средний доход в час
-                                    </label>
-
-                                    <strong>
-                                        <span id="rateValue">35</span> zł
-                                    </strong>
-
-                                </div>
-
-                                <input
-                                    type="range"
-                                    id="hourlyIncome"
-                                    min="20"
-                                    max="60"
-                                    value="35"
-                                    step="1"
-                                >
-
-                            </div>
-
-                            <div class="earnings-results">
-
-                                <div class="earnings-result">
-
-                                    <span>
-                                        За неделю
-                                    </span>
-
-                                    <strong>
-                                        <span id="weeklyIncome">
-                                            2 520
-                                        </span>
-                                        zł
-                                    </strong>
-
-                                </div>
-
-                                <div
-                                    class="earnings-result earnings-result-main"
-                                >
-
-                                    <span>
-                                        За месяц
-                                    </span>
-
-                                    <strong>
-                                        <span id="monthlyIncome">
-                                            10 912
-                                        </span>
-                                        zł
-                                    </strong>
-
-                                </div>
-
-                            </div>
-
-                            <p class="earnings-note">
-                                Расчёт ориентировочный и не является
-                                гарантией дохода. Итог зависит от города,
-                                спроса, бонусов и расходов.
-                            </p>
-
-                            <a
-                                href="#application"
-                                class="earnings-button"
-                            >
-                                Начать зарабатывать →
-                            </a>
-
-                        </article>
-
-                    </div>
-
-                </div>
-
-                <!-- Рекламный баннер -->
-
-                <div class="hero-banner">
-
-                    <div class="banner-content">
-
-                        <span class="banner-label">
-                            ENIGMA PARTNER
-                        </span>
-
-                        <h2>
-                            Работайте с Enigma Partner
-
-                            <span>
-                                и зарабатывайте больше
-                            </span>
-                        </h2>
-
-                        <p>
+</h2>
+<p>
                             Подключение к Uber, Bolt, FreeNow,
                             Glovo, Wolt, Uber Eats и Bolt Food.
                         </p>
-
-                        <div class="banner-grid">
-
-                            <div>
+<div class="banner-grid">
+<div>
                                 ✔ Подключение за 24 часа
                             </div>
-
-                            <div>
+<div>
                                 ✔ Доход до 7000 zł/нед
                             </div>
-
-                            <div>
+<div>
                                 ✔ Еженедельные выплаты
                             </div>
-
-                            <div>
+<div>
                                 ✔ Поддержка 24/7
                             </div>
-
-                        </div>
-
-                        <div class="banner-buttons">
-
-                            <a
-                                href="#application"
-                                class="hero-btn hero-btn-primary"
-                            >
+</div>
+<div class="banner-buttons">
+<a class="hero-btn hero-btn-primary" href="#application">
                                 Начать работу
                             </a>
-
-                            <a
-                                href="#content"
-                                class="hero-btn hero-btn-secondary"
-                            >
+<a class="hero-btn hero-btn-secondary" href="#content">
                                 ▶ Смотреть видео
                             </a>
+</div>
+</div>
+<div class="hero-car">
+<img alt="Автомобиль Enigma Partner" src="images/slide5.png"/>
+</div>
+</div>
 
-                        </div>
-
-                    </div>
-
-                    <div class="hero-car">
-
-                        <img
-                            src="images/slide5.png"
-                            alt="Enigma Mustang"
-                        >
-
-                    </div>
-
+</div>
+</section>
+<!-- Как начать работу -->
+<section class="work-process" id="process">
+<div class="section-container">
+<div class="process-heading">
+<span class="process-label">
+                ПРОСТОЙ СТАРТ
+            </span>
+<h2>
+                Начните работать
+                <span>за 4 шага</span>
+</h2>
+<p>
+                Мы сопровождаем вас от первой заявки
+                до выхода на линию.
+            </p>
+</div>
+<div class="process-timeline">
+<div class="process-line"></div>
+<!-- Шаг 1 -->
+<article class="process-step">
+<div class="process-number">
+                    01
                 </div>
-
-            </div>
-
-        </section>
-
-        <!-- Тарифы -->
-
-        <section
-            class="section dark-section"
-            id="tariffs"
-        >
-
-            <div class="section-container">
-
-                <div class="section-heading">
-
-                    <span>
+<div class="process-orbit">
+<div class="process-icon">
+                        ✍️
+                    </div>
+</div>
+<div class="process-content">
+<span>
+                        Заявка
+                    </span>
+<h3>
+                        Оставьте контакты
+                    </h3>
+<p>
+                        Заполните короткую форму,
+                        и менеджер свяжется с вами.
+                    </p>
+</div>
+</article>
+<!-- Шаг 2 -->
+<article class="process-step">
+<div class="process-number">
+                    02
+                </div>
+<div class="process-orbit">
+<div class="process-icon">
+                        📄
+                    </div>
+</div>
+<div class="process-content">
+<span>
+                        Документы
+                    </span>
+<h3>
+                        Подготовим оформление
+                    </h3>
+<p>
+                        Проверим документы и поможем
+                        пройти регистрацию.
+                    </p>
+</div>
+</article>
+<!-- Шаг 3 -->
+<article class="process-step">
+<div class="process-number">
+                    03
+                </div>
+<div class="process-orbit">
+<div class="process-icon">
+                        ⚙️
+                    </div>
+</div>
+<div class="process-content">
+<span>
+                        Подключение
+                    </span>
+<h3>
+                        Активируем сервисы
+                    </h3>
+<p>
+                        Подключим Uber, Bolt, FreeNow,
+                        Glovo, Wolt и другие платформы.
+                    </p>
+</div>
+</article>
+<!-- Шаг 4 -->
+<article class="process-step">
+<div class="process-number">
+                    04
+                </div>
+<div class="process-orbit">
+<div class="process-icon">
+                        🚀
+                    </div>
+</div>
+<div class="process-content">
+<span>
+                        Старт
+                    </span>
+<h3>
+                        Начинайте зарабатывать
+                    </h3>
+<p>
+                        Выходите на линию и получайте
+                        поддержку Enigma Partner.
+                    </p>
+</div>
+</article>
+</div>
+<div class="process-action">
+<a class="process-button" href="#application">
+                Начать работу
+                <span>→</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Тарифы -->
+<section class="section dark-section" id="tariffs">
+<div class="section-container">
+<div class="section-heading">
+<span>
                         Тарифы
                     </span>
-
-                    <h2>
+<h2>
                         Прозрачные условия
                     </h2>
-
-                    <p>
+<p>
                         Выберите подходящий вариант работы
                         с Enigma Partner.
                     </p>
-
-                </div>
-
-                <div class="tariffs-grid">
-
-                    <article class="tariff-card active-tariff">
-
-                        <div class="popular-label">
+</div>
+<div class="tariffs-grid">
+<article class="tariff-card active-tariff">
+<div class="popular-label">
                             Популярно
                         </div>
-
-                        <h3>
+<h3>
                             Водитель
                         </h3>
-
-                        <div class="platforms">
-                            <span>Uber</span>
-                            <span>Bolt</span>
-                            <span>FreeNow</span>
-                        </div>
-
-                        <ul>
-                            <li>Помощь с регистрацией</li>
-                            <li>Поддержка менеджера</li>
-                            <li>Работа во всех приложениях</li>
-                            <li>Помощь с документами</li>
-                        </ul>
-
-                        <div class="tariff-price">
-                            <strong>150 zł</strong>
-                            <span>/ неделя</span>
-                        </div>
-
-                        <a
-                            href="#application"
-                            class="tariff-button"
-                        >
+<div class="platforms">
+<span>Uber</span>
+<span>Bolt</span>
+<span>FreeNow</span>
+</div>
+<ul>
+<li>Помощь с регистрацией</li>
+<li>Поддержка менеджера</li>
+<li>Работа во всех приложениях</li>
+<li>Помощь с документами</li>
+</ul>
+<div class="tariff-price">
+<strong>150 zł</strong>
+<span>/ неделя</span>
+</div>
+<a class="tariff-button" href="#application">
                             Подать заявку
                         </a>
-
-                    </article>
-
-                    <article class="tariff-card">
-
-                        <h3>
+</article>
+<article class="tariff-card">
+<h3>
                             Курьер
                         </h3>
-
-                        <div class="platforms">
-                            <span>Glovo</span>
-                            <span>Wolt</span>
-                            <span>Bolt Food</span>
-                        </div>
-
-                        <ul>
-                            <li>Быстрое подключение</li>
-                            <li>Несколько приложений</li>
-                            <li>Поддержка менеджера</li>
-                            <li>Помощь с регистрацией</li>
-                        </ul>
-
-                        <div class="tariff-price">
-                            <strong>
+<div class="platforms">
+<span>Glovo</span>
+<span>Wolt</span>
+<span>Bolt Food</span>
+</div>
+<ul>
+<li>Быстрое подключение</li>
+<li>Несколько приложений</li>
+<li>Поддержка менеджера</li>
+<li>Помощь с регистрацией</li>
+</ul>
+<div class="tariff-price">
+<strong>
                                 Уточнить
                             </strong>
-                        </div>
-
-                        <a
-                            href="#application"
-                            class="tariff-button"
-                        >
+</div>
+<a class="tariff-button" href="#application">
                             Узнать условия
                         </a>
-
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Контент -->
-
-        <section
-            class="content-section"
-            id="content"
-        >
-
-            <div class="section-container">
-
-                <div class="section-heading content-heading">
-
-                    <span>
+</article>
+</div>
+</div>
+</section>
+<!-- Контент -->
+<section class="content-section" id="content">
+<div class="section-container">
+<div class="section-heading content-heading">
+<span>
                         Enigma Partner в соцсетях
                     </span>
-
-                    <h2>
+<h2>
                         Наш контент
                     </h2>
-
-                    <p>
+<p>
                         Видео о работе в такси и доставке,
                         документах, выплатах и жизни наших
                         водителей и курьеров.
                     </p>
-
-                </div>
-
-                <div class="content-grid">
-
-                    <article class="video-card">
-
-                        <div class="video-frame">
-                            <video
-                                src="videos/video1.mp4"
-                                autoplay
-                                muted
-                                loop
-                                playsinline
-                                preload="auto"
-                            ></video>
-                        </div>
-
-                        <div class="video-info">
-                            <span>TikTok</span>
-
-                            <h3>
+</div>
+<div class="content-grid">
+<!-- Видео 1 -->
+<article class="video-card">
+<div class="video-frame">
+<video autoplay="" loop="" muted="" playsinline="" preload="metadata" src="videos/video1.mp4"></video>
+</div>
+<div class="video-info">
+<span>
+                                TikTok
+                            </span>
+<h3>
                                 Как начать работать
                                 с Enigma Partner
                             </h3>
-                        </div>
-
-                    </article>
-
-                    <article class="video-card">
-
-                        <div class="video-frame">
-                            <video
-                                src="videos/video2.MOV"
-                                autoplay
-                                muted
-                                loop
-                                playsinline
-                                preload="auto"
-                            ></video>
-                        </div>
-
-                        <div class="video-info">
-                            <span>TikTok</span>
-
-                            <h3>
+</div>
+</article>
+<!-- Видео 2 -->
+<article class="video-card">
+<div class="video-frame">
+<video autoplay="" loop="" muted="" playsinline="" preload="metadata" src="videos/video2.mp4"></video>
+</div>
+<div class="video-info">
+<span>
+                                TikTok
+                            </span>
+<h3>
                                 Сколько можно заработать
                                 водителем
                             </h3>
-                        </div>
-
-                    </article>
-
-                    <article class="video-card">
-
-                        <div class="video-frame">
-                            <video
-                                src="videos/video3.mp4"
-                                autoplay
-                                muted
-                                loop
-                                playsinline
-                                preload="auto"
-                            ></video>
-                        </div>
-
-                        <div class="video-info">
-                            <span>TikTok</span>
-
-                            <h3>
+</div>
+</article>
+<!-- Видео 3 -->
+<article class="video-card">
+<div class="video-frame">
+<video autoplay="" loop="" muted="" playsinline="" preload="metadata" src="videos/video3.mp4"></video>
+</div>
+<div class="video-info">
+<span>
+                                TikTok
+                            </span>
+<h3>
                                 Какие документы нужны
                                 для работы
                             </h3>
-                        </div>
-
-                    </article>
-
-                    <article class="video-card">
-
-                        <div class="video-frame">
-                            <video
-                                src="videos/video4.mp4"
-                                autoplay
-                                muted
-                                loop
-                                playsinline
-                                preload="auto"
-                            ></video>
-                        </div>
-
-                        <div class="video-info">
-                            <span>Видео</span>
-
-                            <h3>
+</div>
+</article>
+<!-- Видео 4 -->
+<article class="video-card">
+<div class="video-frame">
+<video autoplay="" loop="" muted="" playsinline="" preload="metadata" src="videos/video4.mp4"></video>
+</div>
+<div class="video-info">
+<span>
+                                Видео
+                            </span>
+<h3>
                                 Знакомство с нашей командой
                             </h3>
-                        </div>
-
-                    </article>
-
-                </div>
-
-                <div class="content-stats">
-
-                    <div>
-                        <strong>500+</strong>
-                        <span>подключённых водителей</span>
-                    </div>
-
-                    <div>
-                        <strong>7</strong>
-                        <span>сервисов для работы</span>
-                    </div>
-
-                    <div>
-                        <strong>24/7</strong>
-                        <span>поддержка партнёров</span>
-                    </div>
-
-                    <div>
-                        <strong>2</strong>
-                        <span>офиса в Польше</span>
-                    </div>
-
-                </div>
-
-                <div class="content-action">
-
-                    <a
-                        href="https://www.tiktok.com/@enigma.partner.pl?_r=1&_t=ZN-98PLxzPJJDC"
-                        class="content-button"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+</div>
+</article>
+</div>
+<div class="content-stats">
+<div>
+<strong>500+</strong>
+<span>подключённых водителей</span>
+</div>
+<div>
+<strong>7</strong>
+<span>сервисов для работы</span>
+</div>
+<div>
+<strong>24/7</strong>
+<span>поддержка партнёров</span>
+</div>
+<div>
+<strong>2</strong>
+<span>офиса в Польше</span>
+</div>
+</div>
+<div class="content-action">
+<a class="content-button" href="https://www.tiktok.com/@enigma.partner.pl" rel="noopener noreferrer" target="_blank">
                         Смотреть больше в TikTok →
                     </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- Форма -->
-
-        <section
-            class="application-section"
-            id="application"
-        >
-
-            <div class="application-container">
-
-                <div class="application-text">
-
-                    <span>
+</div>
+</div>
+</section>
+<!-- Форма заявки -->
+<section class="application-section" id="application">
+<div class="application-container">
+<div class="application-text">
+<span>
                         Начните работать
                     </span>
-
-                    <h2>
+<h2>
                         Оставьте заявку
                     </h2>
-
-                    <p>
+<p>
                         Заполните форму, и наш менеджер
                         свяжется с вами.
                     </p>
-
-                </div>
-
-                <form
-                    class="application-form"
-                    id="applicationForm"
-                >
-
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Ваше имя"
-                        required
-                    >
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        placeholder="Номер телефона"
-                        required
-                    >
-
-                    <select
-                        id="city"
-                        required
-                    >
-                        <option value="">
+</div>
+<form class="application-form" id="applicationForm">
+<label class="visually-hidden" for="name">
+                        Ваше имя
+                    </label>
+<input autocomplete="name" id="name" name="name" placeholder="Ваше имя" required="" type="text"/>
+<label class="visually-hidden" for="phone">
+                        Номер телефона
+                    </label>
+<input autocomplete="tel" id="phone" name="phone" placeholder="Номер телефона" required="" type="tel"/>
+<label class="visually-hidden" for="city">
+                        Выберите город
+                    </label>
+<select id="city" name="city" required="">
+<option value="">
                             Выберите город
                         </option>
-
-                        <option value="Poznań">
+<option value="Poznań">
                             Poznań
                         </option>
-
-                        <option value="Warszawa">
+<option value="Warszawa">
                             Warszawa
                         </option>
-
-                        <option value="Другой город">
+<option value="Другой город">
                             Другой город
                         </option>
-                    </select>
-
-                    <select
-                        id="work"
-                        required
-                    >
-                        <option value="">
+</select>
+<label class="visually-hidden" for="work">
+                        Выберите направление
+                    </label>
+<select id="work" name="work" required="">
+<option value="">
                             Выберите направление
                         </option>
-
-                        <option value="Водитель">
+<option value="Водитель">
                             Водитель
                         </option>
-
-                        <option value="Курьер">
+<option value="Курьер">
                             Курьер
                         </option>
-
-                        <option value="Аренда автомобиля">
+<option value="Аренда автомобиля">
                             Аренда автомобиля
                         </option>
-                    </select>
-
-                    <button type="submit">
+</select>
+<button type="submit">
                         Отправить заявку
                     </button>
-
-                    <small>
+<small>
                         Сейчас форма работает
                         в демонстрационном режиме.
                     </small>
-
-                </form>
-
-            </div>
-
-        </section>
-
-        <!-- Финальный баннер -->
-
-        <section class="final-cta">
-
-            <div class="section-container">
-
-                <div class="final-cta-card">
-
-                    <img
-                        src="images/cta-car.jpg"
-                        class="final-cta-background"
-                        alt=""
-                    >
-
-                    <div class="final-cta-overlay"></div>
-
-                    <div class="final-cta-content">
-
-                        <span class="final-cta-label">
+</form>
+</div>
+</section>
+<!-- Финальный баннер -->
+<section class="final-cta">
+<div class="section-container">
+<div class="final-cta-card">
+<img alt="" class="final-cta-background" src="images/cta-car.jpg"/>
+<div class="final-cta-overlay"></div>
+<div class="final-cta-content">
+<span class="final-cta-label">
                             ENIGMA PARTNER
                         </span>
-
-                        <h2>
+<h2>
                             Работайте с Enigma Partner
 
                             <span>
                                 и зарабатывайте больше
                             </span>
-                        </h2>
-
-                        <p>
+</h2>
+<p>
                             Подключаем водителей и курьеров
                             к популярным платформам и поддерживаем
                             на каждом этапе.
                         </p>
-
-                        <div class="final-cta-features">
-
-                            <div>
-                                <span>✓</span>
+<div class="final-cta-features">
+<div>
+<span>✓</span>
                                 Подключение за 24 часа
                             </div>
-
-                            <div>
-                                <span>✓</span>
+<div>
+<span>✓</span>
                                 Доход до 7000 zł в неделю
                             </div>
-
-                            <div>
-                                <span>✓</span>
+<div>
+<span>✓</span>
                                 Еженедельные выплаты
                             </div>
-
-                            <div>
-                                <span>✓</span>
+<div>
+<span>✓</span>
                                 Поддержка 24/7
                             </div>
-
-                        </div>
-
-                        <div class="final-cta-buttons">
-
-                            <a
-                                href="#application"
-                                class="final-cta-primary"
-                            >
+</div>
+<div class="final-cta-buttons">
+<a class="final-cta-primary" href="#application">
                                 Начать работу
                                 <span>→</span>
-                            </a>
-
-                            <a
-                                href="#content"
-                                class="final-cta-secondary"
-                            >
+</a>
+<a class="final-cta-secondary" href="#content">
                                 ▶ Смотреть видео
                             </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- Контакты -->
-
-    <footer id="contacts">
-
-        <div class="footer-container">
-
-            <div class="footer-logo">
-                <img
-                    src="images/logo.png"
-                    alt="Enigma Partner"
-                >
-            </div>
-
-            <div class="footer-column">
-                <h3>Poznań</h3>
-                <p>Lindego 6, 60-573 Poznań</p>
-                <p>Пн–Пт, 10:00–19:00</p>
-            </div>
-
-            <div class="footer-column">
-                <h3>Warszawa</h3>
-                <p>Michała Spisaka 66, 02-495 Warszawa</p>
-                <p>Пн–Пт, 10:00–19:00</p>
-            </div>
-
-            <div class="footer-column">
-                <h3>Платформы</h3>
-                <p>Uber, Bolt, FreeNow</p>
-                <p>Glovo, Wolt, Uber Eats, Bolt Food</p>
-            </div>
-
-        </div>
-
-        <div class="copyright">
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Подвал -->
+<footer id="contacts">
+<div class="footer-container">
+<div class="footer-logo">
+<img alt="Enigma Partner" src="images/logo.png"/>
+</div>
+<div class="footer-column">
+<h3>
+                    Poznań
+                </h3>
+<p>
+                    Lindego 6, 60-573 Poznań
+                </p>
+<p>
+                    Пн–Пт, 10:00–19:00
+                </p>
+</div>
+<div class="footer-column">
+<h3>
+                    Warszawa
+                </h3>
+<p>
+                    Michała Spisaka 66, 02-495 Warszawa
+                </p>
+<p>
+                    Пн–Пт, 10:00–19:00
+                </p>
+</div>
+<div class="footer-column">
+<h3>
+                    Платформы
+                </h3>
+<p>
+                    Uber, Bolt, FreeNow
+                </p>
+<p>
+                    Glovo, Wolt, Uber Eats, Bolt Food
+                </p>
+</div>
+</div>
+<div class="copyright">
             © 2026 Enigma Partner
         </div>
-
-    </footer>
-
-    <!-- Уведомление -->
-
-    <div
-        class="notification"
-        id="notification"
-    >
+</footer>
+<!-- Уведомление -->
+<div aria-live="polite" class="notification" id="notification" role="status">
         Спасибо! Ваша заявка принята.
     </div>
-
-    <script src="script.js"></script>
-
+<script src="script.js"></script>
 </body>
-
 </html>
