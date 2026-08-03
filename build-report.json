@@ -1,0 +1,6 @@
+{
+  "html_has_doctype": true,
+  "css_braces_balanced": true,
+  "js_braces_balanced": true,
+  "calculator_ids_unique": true
+}

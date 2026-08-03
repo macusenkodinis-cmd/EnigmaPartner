@@ -1,524 +1,209 @@
-/* ===========================
-   Слайдер
-=========================== */
+(() => {
+    "use strict";
 
-const slides = document.querySelectorAll(".mini-slide");
-const dots = document.querySelectorAll(".mini-dot");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const prevBtn = document.querySelector(".slider-prev");
-const nextBtn = document.querySelector(".slider-next");
+    function createSlider({
+        rootSelector,
+        slideSelector,
+        dotSelector,
+        prevSelector,
+        nextSelector,
+        interval = 4500
+    }) {
+        const root = document.querySelector(rootSelector);
+        if (!root) return;
 
-let currentSlide = 0;
-let sliderInterval;
+        const slides = [...root.querySelectorAll(slideSelector)];
+        const dots = [...root.querySelectorAll(dotSelector)];
+        const prev = root.querySelector(prevSelector);
+        const next = root.querySelector(nextSelector);
 
-function showSlide(index) {
+        if (!slides.length) return;
 
-    slides.forEach(slide => slide.classList.remove("active"));
-    dots.forEach(dot => dot.classList.remove("active"));
+        let index = 0;
+        let timer = null;
+        let touchStartX = 0;
 
-    if (index < 0) index = slides.length - 1;
-    if (index >= slides.length) index = 0;
+        const show = (nextIndex) => {
+            index = (nextIndex + slides.length) % slides.length;
+            slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+            dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+        };
 
-    currentSlide = index;
+        const stop = () => {
+            if (timer) window.clearInterval(timer);
+            timer = null;
+        };
 
-    slides[currentSlide].classList.add("active");
+        const start = () => {
+            stop();
+            if (!reducedMotion) timer = window.setInterval(() => show(index + 1), interval);
+        };
 
-    if (dots[currentSlide]) {
-        dots[currentSlide].classList.add("active");
+        prev?.addEventListener("click", () => { show(index - 1); start(); });
+        next?.addEventListener("click", () => { show(index + 1); start(); });
+        dots.forEach((dot, i) => dot.addEventListener("click", () => { show(i); start(); }));
+
+        root.addEventListener("mouseenter", stop);
+        root.addEventListener("mouseleave", start);
+        root.addEventListener("focusin", stop);
+        root.addEventListener("focusout", start);
+
+        root.addEventListener("touchstart", (event) => {
+            touchStartX = event.touches[0].clientX;
+        }, { passive: true });
+
+        root.addEventListener("touchend", (event) => {
+            const difference = touchStartX - event.changedTouches[0].clientX;
+            if (Math.abs(difference) >= 45) {
+                show(index + (difference > 0 ? 1 : -1));
+                start();
+            }
+        }, { passive: true });
+
+        show(0);
+        start();
     }
-}
 
-function nextSlide() {
-    showSlide(currentSlide + 1);
-}
-
-function prevSlide() {
-    showSlide(currentSlide - 1);
-}
-
-function startSlider() {
-
-    clearInterval(sliderInterval);
-
-    sliderInterval = setInterval(() => {
-        nextSlide();
-    }, 4000);
-
-}
-
-showSlide(0);
-startSlider();
-
-nextBtn?.addEventListener("click", () => {
-    nextSlide();
-    startSlider();
-});
-
-prevBtn?.addEventListener("click", () => {
-    prevSlide();
-    startSlider();
-});
-
-dots.forEach((dot, index) => {
-
-    dot.addEventListener("click", () => {
-
-        showSlide(index);
-        startSlider();
-
+    createSlider({
+        rootSelector: '[data-slider="main"]',
+        slideSelector: ".mini-slide",
+        dotSelector: ".mini-dot",
+        prevSelector: ".slider-prev",
+        nextSelector: ".slider-next",
+        interval: 4000
     });
 
-});
-
-/* ===========================
-   Выдвижная шапка
-=========================== */
-
-const header = document.getElementById("siteHeader");
-const trigger = document.getElementById("headerTrigger");
-
-let headerTimeout;
-
-function showHeader() {
-
-    clearTimeout(headerTimeout);
-
-    header?.classList.add("visible");
-
-}
-
-function hideHeader() {
-
-    headerTimeout = setTimeout(() => {
-
-        header?.classList.remove("visible");
-
-    },250);
-
-}
-
-trigger?.addEventListener("mouseenter",showHeader);
-header?.addEventListener("mouseenter",showHeader);
-
-trigger?.addEventListener("mouseleave",hideHeader);
-header?.addEventListener("mouseleave",hideHeader);
-
-/* ===========================
-   Видео
-=========================== */
-
-const videos = document.querySelectorAll(".video-card video");
-
-videos.forEach(video=>{
-
-    video.muted = true;
-    video.loop = true;
-
-    video.play().catch(()=>{});
-
-    video.addEventListener("click",()=>{
-
-        if(video.paused){
-
-            video.play();
-
-        }else{
-
-            video.pause();
-
-        }
-
+    createSlider({
+        rootSelector: '[data-slider="chebureki"]',
+        slideSelector: ".partner-slide",
+        dotSelector: ".partner-dot",
+        prevSelector: ".partner-prev",
+        nextSelector: ".partner-next",
+        interval: 4500
     });
 
-});
-
-/* ===========================
-   Калькулятор дохода
-=========================== */
-
-const hoursInput =
-    document.getElementById("hoursPerDay");
-
-const daysInput =
-    document.getElementById("daysPerWeek");
-
-const bonusInput =
-    document.getElementById("includeBonus");
-
-const hoursValue =
-    document.getElementById("hoursValue");
-
-const daysValue =
-    document.getElementById("daysValue");
-
-const dailyIncome =
-    document.getElementById("dailyIncome");
-
-const weeklyIncome =
-    document.getElementById("weeklyIncome");
-
-const monthlyIncome =
-    document.getElementById("monthlyIncome");
-
-const scheduleSummary =
-    document.getElementById("scheduleSummary");
-
-/*
-Средняя ставка скрыта от пользователя как ползунок,
-но её легко изменить здесь.
-*/
-
-const HOURLY_RATE = 16;
-const MONTHS_MULTIPLIER = 4.33;
-const BONUS_MULTIPLIER = 1.10;
-
-function formatIncome(value) {
-    return Math.round(value).toLocaleString("ru-RU");
-}
-
-function getDaysWord(value) {
-
-    if (value === 1) {
-        return "день";
-    }
-
-    if (value >= 2 && value <= 4) {
-        return "дня";
-    }
-
-    return "дней";
-}
-
-function getHoursWord(value) {
-
-    const lastDigit = value % 10;
-    const lastTwoDigits = value % 100;
-
-    if (lastDigit === 1 && lastTwoDigits !== 11) {
-        return "час";
-    }
-
-    if (
-        lastDigit >= 2 &&
-        lastDigit <= 4 &&
-        !(lastTwoDigits >= 12 && lastTwoDigits <= 14)
-    ) {
-        return "часа";
-    }
-
-    return "часов";
-}
-
-function calculateIncome() {
-
-    if (!hoursInput || !daysInput) {
-        return;
-    }
-
-    const hours = Number(hoursInput.value);
-    const days = Number(daysInput.value);
-
-    const includeBonus =
-        Boolean(bonusInput?.checked);
-
-    const multiplier =
-        includeBonus ? BONUS_MULTIPLIER : 1;
-
-    const daily =
-        hours * HOURLY_RATE * multiplier;
-
-    const weekly =
-        daily * days;
-
-    const monthly =
-        weekly * MONTHS_MULTIPLIER;
-
-    if (hoursValue) {
-        hoursValue.textContent = hours;
-    }
-
-    if (daysValue) {
-        daysValue.textContent = days;
-    }
-
-    if (dailyIncome) {
-        dailyIncome.textContent =
-            formatIncome(daily);
-    }
-
-    if (weeklyIncome) {
-        weeklyIncome.textContent =
-            formatIncome(weekly);
-    }
-
-    if (monthlyIncome) {
-        monthlyIncome.textContent =
-            formatIncome(monthly);
-    }
-
-    if (scheduleSummary) {
-
-        scheduleSummary.textContent =
-            `${hours} ${getHoursWord(hours)} в день, ` +
-            `${days} ${getDaysWord(days)} в неделю`;
-    }
-}
-
-hoursInput?.addEventListener(
-    "input",
-    calculateIncome
-);
-
-daysInput?.addEventListener(
-    "input",
-    calculateIncome
-);
-
-bonusInput?.addEventListener(
-    "change",
-    calculateIncome
-);
-
-calculateIncome();
-
-/* ===========================
-   Форма
-=========================== */
-
-const form = document.getElementById("applicationForm");
-const notification = document.getElementById("notification");
-
-form?.addEventListener("submit",(e)=>{
-
-    e.preventDefault();
-
-    notification?.classList.add("show");
-
-    setTimeout(()=>{
-
-        notification?.classList.remove("show");
-
-    },3000);
-
-    form.reset();
-
-});
-
-/* ===========================
-   Машины на дорогах
-=========================== */
-
-const leftCar = document.querySelector(".side-car-left");
-const rightCar = document.querySelector(".side-car-right");
-
-function driveCar(car){
-
-    if(!car) return;
-
-    car.classList.remove("drive");
-
-    void car.offsetWidth;
-
-    car.classList.add("drive");
-
-}
-
-driveCar(leftCar);
-driveCar(rightCar);
-
-setInterval(()=>{
-
-    driveCar(leftCar);
-    driveCar(rightCar);
-
-},10000);
-
-/* ==================================================
-   СЛАЙДЕР CHEBUREKI В HERO
-================================================== */
-
-const cheburekiHeroBanner =
-    document.querySelector(".chebureki-hero-banner");
-
-const cheburekiHeroSlides =
-    document.querySelectorAll(".chebureki-hero-slide");
-
-const cheburekiHeroDots =
-    document.querySelectorAll(".chebureki-hero-dot");
-
-const cheburekiHeroPrev =
-    document.querySelector(".chebureki-hero-prev");
-
-const cheburekiHeroNext =
-    document.querySelector(".chebureki-hero-next");
-
-let cheburekiHeroIndex = 0;
-let cheburekiHeroInterval = null;
-
-function showCheburekiHeroSlide(index) {
-
-    if (!cheburekiHeroSlides.length) {
-        return;
-    }
-
-    if (index < 0) {
-        index = cheburekiHeroSlides.length - 1;
-    }
-
-    if (index >= cheburekiHeroSlides.length) {
-        index = 0;
-    }
-
-    cheburekiHeroIndex = index;
-
-    cheburekiHeroSlides.forEach((slide) => {
-        slide.classList.remove("active");
+    const header = document.getElementById("siteHeader");
+    const headerTrigger = document.getElementById("headerTrigger");
+    let headerTimer = null;
+
+    const setHeader = (open) => {
+        header?.classList.toggle("visible", open);
+        headerTrigger?.setAttribute("aria-expanded", String(open));
+    };
+
+    headerTrigger?.addEventListener("click", () => setHeader(!header?.classList.contains("visible")));
+    headerTrigger?.addEventListener("mouseenter", () => { clearTimeout(headerTimer); setHeader(true); });
+    header?.addEventListener("mouseenter", () => clearTimeout(headerTimer));
+    [headerTrigger, header].forEach((element) => element?.addEventListener("mouseleave", () => {
+        headerTimer = window.setTimeout(() => setHeader(false), 300);
+    }));
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setHeader(false);
     });
 
-    cheburekiHeroDots.forEach((dot) => {
-        dot.classList.remove("active");
+    const HOURLY_RATE = 16;
+    const MONTH_MULTIPLIER = 4.33;
+    const BONUS_MULTIPLIER = 1.10;
+
+    const hoursInput = document.getElementById("hoursPerDay");
+    const daysInput = document.getElementById("daysPerWeek");
+    const bonusInput = document.getElementById("includeBonus");
+
+    const plural = (value, forms) => {
+        const mod10 = value % 10;
+        const mod100 = value % 100;
+        if (mod10 === 1 && mod100 !== 11) return forms[0];
+        if (mod10 >= 2 && mod10 <= 4 && !(mod100 >= 12 && mod100 <= 14)) return forms[1];
+        return forms[2];
+    };
+
+    const formatIncome = (value) => Math.round(value).toLocaleString("ru-RU");
+
+    const calculateIncome = () => {
+        if (!hoursInput || !daysInput) return;
+
+        const hours = Number(hoursInput.value);
+        const days = Number(daysInput.value);
+        const multiplier = bonusInput?.checked ? BONUS_MULTIPLIER : 1;
+
+        const daily = hours * HOURLY_RATE * multiplier;
+        const weekly = daily * days;
+        const monthly = weekly * MONTH_MULTIPLIER;
+
+        document.getElementById("hoursValue").textContent = String(hours);
+        document.getElementById("daysValue").textContent = String(days);
+        document.getElementById("dailyIncome").textContent = formatIncome(daily);
+        document.getElementById("weeklyIncome").textContent = formatIncome(weekly);
+        document.getElementById("monthlyIncome").textContent = formatIncome(monthly);
+        document.getElementById("scheduleSummary").textContent =
+            `${hours} ${plural(hours, ["час", "часа", "часов"])} в день, ` +
+            `${days} ${plural(days, ["день", "дня", "дней"])} в неделю`;
+    };
+
+    [hoursInput, daysInput].forEach((input) => input?.addEventListener("input", calculateIncome));
+    bonusInput?.addEventListener("change", calculateIncome);
+    calculateIncome();
+
+    document.querySelectorAll(".video-card").forEach((card) => {
+        const video = card.querySelector("video");
+        const frame = card.querySelector(".video-frame");
+        const button = card.querySelector("button");
+        if (!video || !frame) return;
+
+        const update = () => frame.classList.toggle("playing", !video.paused);
+        const toggle = () => {
+            if (video.paused) video.play().catch(() => {});
+            else video.pause();
+        };
+
+        button?.addEventListener("click", toggle);
+        video.addEventListener("click", toggle);
+        video.addEventListener("play", update);
+        video.addEventListener("pause", update);
     });
 
-    cheburekiHeroSlides[cheburekiHeroIndex]
-        .classList.add("active");
-
-    if (cheburekiHeroDots[cheburekiHeroIndex]) {
-        cheburekiHeroDots[cheburekiHeroIndex]
-            .classList.add("active");
-    }
-}
-
-function nextCheburekiHeroSlide() {
-    showCheburekiHeroSlide(cheburekiHeroIndex + 1);
-}
-
-function previousCheburekiHeroSlide() {
-    showCheburekiHeroSlide(cheburekiHeroIndex - 1);
-}
-
-function stopCheburekiHeroSlider() {
-
-    if (cheburekiHeroInterval) {
-        clearInterval(cheburekiHeroInterval);
-        cheburekiHeroInterval = null;
-    }
-}
-
-function startCheburekiHeroSlider() {
-
-    stopCheburekiHeroSlider();
-
-    cheburekiHeroInterval = setInterval(() => {
-        nextCheburekiHeroSlide();
-    }, 4500);
-}
-
-cheburekiHeroNext?.addEventListener("click", () => {
-    nextCheburekiHeroSlide();
-    startCheburekiHeroSlider();
-});
-
-cheburekiHeroPrev?.addEventListener("click", () => {
-    previousCheburekiHeroSlide();
-    startCheburekiHeroSlider();
-});
-
-cheburekiHeroDots.forEach((dot) => {
-
-    dot.addEventListener("click", () => {
-
-        const index =
-            Number(dot.dataset.cheburekiIndex);
-
-        showCheburekiHeroSlide(index);
-        startCheburekiHeroSlider();
-    });
-});
-
-/* Пауза при наведении */
-
-cheburekiHeroBanner?.addEventListener(
-    "mouseenter",
-    stopCheburekiHeroSlider
-);
-
-cheburekiHeroBanner?.addEventListener(
-    "mouseleave",
-    startCheburekiHeroSlider
-);
-
-/* Свайп на телефоне */
-
-let cheburekiHeroTouchStart = 0;
-
-cheburekiHeroBanner?.addEventListener(
-    "touchstart",
-    (event) => {
-
-        cheburekiHeroTouchStart =
-            event.touches[0].clientX;
-    },
-    {
-        passive: true
-    }
-);
-
-cheburekiHeroBanner?.addEventListener(
-    "touchend",
-    (event) => {
-
-        const touchEnd =
-            event.changedTouches[0].clientX;
-
-        const difference =
-            cheburekiHeroTouchStart - touchEnd;
-
-        if (Math.abs(difference) < 45) {
-            return;
-        }
-
-        if (difference > 0) {
-            nextCheburekiHeroSlide();
-        } else {
-            previousCheburekiHeroSlide();
-        }
-
-        startCheburekiHeroSlider();
-    },
-    {
-        passive: true
-    }
-);
-
-if (cheburekiHeroSlides.length) {
-    showCheburekiHeroSlide(0);
-    startCheburekiHeroSlider();
-}
-
-
-/* ===========================
-   Mustang при прокрутке
-=========================== */
-
-const mustangLane = document.querySelector(".mustang-lane");
-const mustangBanner = document.querySelector(".mustang-banner");
-
-if (mustangLane && mustangBanner) {
-    if ("IntersectionObserver" in window) {
-        const mustangObserver = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    mustangBanner.classList.toggle(
-                        "is-visible",
-                        entry.isIntersecting
-                    );
-                });
-            },
-            { threshold: 0.2 }
-        );
-
-        mustangObserver.observe(mustangLane);
+    const revealElements = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !reducedMotion) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.12 });
+        revealElements.forEach((element) => revealObserver.observe(element));
     } else {
-        mustangBanner.classList.add("is-visible");
+        revealElements.forEach((element) => element.classList.add("visible"));
     }
-}
+
+    const mustangLane = document.querySelector(".mustang-lane");
+    const mustangCar = document.querySelector(".mustang-car");
+    if (mustangLane && mustangCar) {
+        if ("IntersectionObserver" in window && !reducedMotion) {
+            const mustangObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => mustangCar.classList.toggle("visible", entry.isIntersecting));
+            }, { threshold: 0.2 });
+            mustangObserver.observe(mustangLane);
+        } else {
+            mustangCar.classList.add("visible");
+        }
+    }
+
+    const applicationForm = document.getElementById("applicationForm");
+    const notification = document.getElementById("notification");
+    applicationForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!applicationForm.reportValidity()) return;
+        notification?.classList.add("show");
+        window.setTimeout(() => notification?.classList.remove("show"), 3200);
+        applicationForm.reset();
+    });
+
+    const backToTop = document.getElementById("backToTop");
+    const updateBackToTop = () => backToTop?.classList.toggle("visible", window.scrollY > 700);
+    window.addEventListener("scroll", updateBackToTop, { passive: true });
+    backToTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" }));
+    updateBackToTop();
+})();
